@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Instagram Clone</title>
+    <link rel="shortcut icon" href="./Instagram-logo.png" type="image/x-icon">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Lobster&family=Tiro+Devanagari+Marathi&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <div id="preloader">
+            <div class="instalogo">
+                <img src="./Instagram-logo.png" alt="">
+            </div>
+            <p>from</p>
+            <div class="metalogo">
+                <img src="./meta.jpeg" alt="">
+            </div>
+        </div>
+        <div id="full-screen">
+            
+        </div>
+        <div class="nav">
+            <!--For mobile view-->
+            <div class="nav-left">
+                <h2>Instagram</h2>
+                <i class="fa-solid fa-angle-down"></i>
+            </div>
+            <div class="nav-right">
+                <i class="fa-regular fa-heart"></i>
+                <i class="fa-regular fa-comment "></i>
+            </div>
+            <!--For desktop view-->
+            <div class="desktop">
+                <div class="nav-header">
+                    <h2>Instagram</h2>
+                </div>
+                <div class="nav-options">
+                    <div class="option" onclick="refresh()">
+                        <i class="fa-solid fa-house" ></i>
+                        <p>Home</p>
+                    </div>
+                    <div class="option">
+                        <i class="fa-solid fa-magnifying-glass"></i>
+                        <p>Search</p>
+                    </div>
+                    <div class="option">
+                        <i class="fa-regular fa-compass"></i>
+                        <p>Explore</p>
+                    </div>
+                    <div class="option">
+                        <i class="fa-solid fa-clapperboard"></i>
+                        <p>Reels</p>
+                    </div>
+                    <div class="option">
+                        <i class="fa-regular fa-comment"></i>
+                        <p>Messages</p>
+                    </div>
+                    <div class="option">
+                        <i class="fa-regular fa-heart"></i>
+                        <p>Notifications</p>
+                    </div>
+                    <div class="option" onclick="cret()">
+                        <i class="fa-regular fa-square-plus"></i>
+                        <p >Create</p>
+                    </div>
+                    <div class="option">
+                        <img src="./shinchan.webp" alt="">
+                        <p>Profile</p>
+                    </div>
+                </div>
+                <div class="nav-footer">
+                    
+                    <div class="option">
+                        <i class="fa-brands fa-threads"></i>
+                        <p>Threads</p>
+                    </div>
+                    <div class="option">
+                        <i class="fa-solid fa-bars"></i>
+                        <p>More</p>
+                    </div>
+                </div>
+            </div>
+        </div>  
+        <div class="main">
+        </div>
+        <div class="suggetion">
+            <div class="c-header c-pad">
+                <div class="h-left">
+                        <div class="image story">
+                            <img src="./shinchan.webp" alt="">
+                        </div>
+                        <span>shinchan_nohara</span>
+                </div>
+                <div class="h-right">
+                    <p>switch</p>
+                </div>
+            </div>
+            <div class="s-info">
+                <p>Suggested for you</p>
+                <p>See All</p>
+            </div>
+            <div class="suggest">
+
+            </div>
+            <div class="s-opt">
+                <p><span>About</span>
+                    
+                    <span>Help</span>
+                    <em>.</em>
+                    <span>Press</span>
+                    <em>.</em>
+                    <span>API</span>
+                    <em>.</em>
+                    <span>Jobs</span>
+                    <em>.</em>
+                    <span>Privacy</span>
+                    <em>.</em>
+                    <span>Terms</span>
+                <span>.</span></p>
+                <p><span>Locations</span>
+                    <em>.</em>
+                    <span>Language</span>
+                    <em>.</em>
+                    <span>Meta Verified</span>
+                </p>
+                
+
+                 
+            </div>
+            <div class="copyright">
+                <p>© 2023 INSTAGRAM FROM META</p>
+            </div>
+        </div>
+        <div class="footer">
+            <i class="fa-solid fa-house" onclick="refresh()"></i>
+            <i class="fa-solid fa-magnifying-glass"></i>
+            <i class="fa-regular fa-square-plus" onclick="cret()"></i>
+            <i class="fa-solid fa-clapperboard"></i>
+            <img src="./shinchan.webp" alt="">
+        </div>
+    </div>
+    <div class="create" >
+        <div class="cre-header">
+            <p>Create new post</p>
+
+            <span onclick="next()">Next</span>
+        </div>
+        <div class="cre-main">
+            <div class="cre-main1">
+                <i class="fa-solid fa-photo-film" onclick="al()"></i>
+                <p>Select photos and videos here</p>
+                <label for="file" class="cre-btn" >Select from device</label>
+                <input type="file" name="" id="file">
+                <p>Or</p>
+                
+                <input type="text" name=""  placeholder="Enter URL Here...">
+            </div>
+            <div class="cre-main2">
+                <input type="text" name="" id="t" placeholder="Enter Username">
+                <textarea name="text" id="txt" cols="30" rows="10" placeholder="Write a caption..."></textarea>
+            </div>
+        </div>
+    </div>
+    <script src="./app.js"></script>
+</body>
+</html>
