@@ -23,12 +23,12 @@ window.addEventListener("load",function(){
     });
 
 let arr = [
-    {dp:"google_logo_2015_810-1900x700_c.webp",
-    story:"download.jpeg",
-    username:"google"},
+    {dp: "google_logo_2015_810-1900x700_c.webp",
+    story: "download.jpeg",
+    username: "google"},
     {dp:"iron-man-helmet-1080P-wallpaper.jpg",
-    story:"ironman.jpeg",
-    username:"IamIronMan"}
+    story: "ironman.jpeg",
+    username: "IamIronMan"}
     
 ];
 
@@ -153,7 +153,7 @@ function next(){
         // Create a post
         
         postbtn.addEventListener("click",function(){
-            let result = arr2.find(ele => ele.username === create.children[1].children[1].children[0].value);
+            let result = arr2.find(ele => ele.username === document.getElementById('t').value);
             let obj = {};
             obj.dp = result.dp;
             obj.username = result.username;
@@ -177,7 +177,7 @@ function next(){
         alert("Enter correct image or video link !!");
     }
 }
-
+arr2 = JSON.parse(localStorage.getItem('arr2')) || [];
 arr2 = shuffleArray(arr2);
 
 // arr2.pop();
