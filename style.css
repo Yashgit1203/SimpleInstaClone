@@ -495,7 +495,12 @@ video {
   border-bottom: none;
   border-right: none;
 }
-
+.create .cre-main .cre-main1 img{
+  width: 100%;
+  height: 100%;
+  display: none;
+  border-bottom-left-radius: 12px;
+}
 .create .cre-main .cre-main2 {
   width: 40%;
   height: calc(100% - 45px);

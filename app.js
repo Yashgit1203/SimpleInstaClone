@@ -23,12 +23,12 @@ window.addEventListener("load",function(){
     });
 
 let arr = [
-    {dp: "google_logo_2015_810-1900x700_c.webp",
-    story: "download.jpeg",
-    username: "google"},
+    {dp:"google_logo_2015_810-1900x700_c.webp",
+    story:"download.jpeg",
+    username:"google"},
     {dp:"iron-man-helmet-1080P-wallpaper.jpg",
-    story: "ironman.jpeg",
-    username: "IamIronMan"}
+    story:"ironman.jpeg",
+    username:"IamIronMan"}
     
 ];
 
@@ -87,7 +87,7 @@ function shuffleArray(array) {
 }
 
 
-// localStorage.setItem('arr2', JSON.stringify(arr2));
+
 
 let arr2 = JSON.parse(localStorage.getItem('arr2')) || [];
 
@@ -109,6 +109,8 @@ arr2 = [
      post:"tony-stark-iron-man-4k-7q-1125x2436.jpg",
      description:"The Truth is, I Am Iron Man 😎"}
 ];
+// localStorage.setItem('arr2', JSON.stringify(arr2));
+
 //Create Post Div
 
 let create = document.querySelector(".create");
@@ -119,11 +121,13 @@ function cret(){
 }
 
 
+const selectedImage = document.getElementById('selected-image');
 function next(){
-    if(create.children[1].children[0].children[5].value == ""){
-        alert("Enter image or video link");
+    
+    if((create.children[1].children[0].children[5].value == "") && (document.getElementById('file').files.length == 0)){
+        alert("Enter image or video link or add them");
     }
-    else if(create.children[1].children[0].children[5].value.includes("https://")){
+    else if((create.children[1].children[0].children[5].value.includes("https://")) || (document.getElementById('file').files.length > 0)){
         let postbtn = document.createElement("p");
         postbtn.innerHTML = "Post";
         create.style.animation = "wid ease 1s";
@@ -143,13 +147,18 @@ function next(){
         create.children[1].children[0].children[2].style.display = "none";
         create.children[1].children[0].children[4].style.display = "none";
         create.children[1].children[0].children[5].style.display = "none";
-
         
-        create.children[1].children[0].style.backgroundImage = `url(${create.children[1].children[0].children[5].value})`;
-        create.children[1].children[0].style.backgroundSize = "cover";
-        create.children[1].children[0].style.backgroundPosition = "center center";
+        if((document.getElementById('file').files.length > 0)){
+            selectedImage.src = URL.createObjectURL(document.getElementById('file').files[0]);
+            create.children[1].children[0].children[6].style.display = "block";
+        }
+        else if((create.children[1].children[0].children[5].value.includes("https://")))
+        {
+            create.children[1].children[0].style.backgroundImage = `url(${create.children[1].children[0].children[5].value})`;
+            create.children[1].children[0].style.backgroundSize = "cover";
+            create.children[1].children[0].style.backgroundPosition = "center center";
+        }
 
-        
         // Create a post
         
         postbtn.addEventListener("click",function(){
@@ -157,24 +166,27 @@ function next(){
             let obj = {};
             obj.dp = result.dp;
             obj.username = result.username;
-            obj.post = create.children[1].children[0].children[5].value;
+            if((document.getElementById('file').files.length > 0)){
+              obj.post = selectedImage.src;
+            }
+            else if((create.children[1].children[0].children[5].value.includes("https://")))
+            {
+                obj.post = create.children[1].children[0].children[5].value;
+            }
+            
             obj.description =  create.children[1].children[1].children[1].value;
             let myArray = JSON.parse(localStorage.getItem('arr2'))
             myArray.push(obj);
-
+            
             localStorage.setItem('arr2', JSON.stringify(myArray));
 
             // Update the arr2 variable with the modified data from localStorage
             arr2 = JSON.parse(localStorage.getItem('arr2')) || [];
-
+            console.dir(obj);
             create.style.display = "none";
             container.style.opacity = 1;
             refresh();
         });
-    }
-    else
-    {
-        alert("Enter correct image or video link !!");
     }
 }
 arr2 = JSON.parse(localStorage.getItem('arr2')) || [];
