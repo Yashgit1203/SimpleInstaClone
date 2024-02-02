@@ -35,7 +35,7 @@ let arr = [
 let clutter = "";
 arr.forEach(function(ele,idx){
     clutter += `<div class="story">
-    <img src="${ele.dp}" id ="${idx}" alt="">
+    <img src="images/${ele.dp}" id ="${idx}" alt="">
     <p>${ele.username}</p>
 </div>
     `
@@ -47,10 +47,10 @@ stories.innerHTML = clutter;
 stories.addEventListener("click",function(val){
     arr.forEach(function(ele){
         if((ele.story.includes(".mp4")) == true){
-            full.innerHTML = `<video src="${arr[val.target.id].story}" autoplay></video>`;
+            full.innerHTML = `<video src="videos/${arr[val.target.id].story}" autoplay></video>`;
         }
         else{
-            full.style.backgroundImage = `url(${arr[val.target.id].story})`;
+            full.style.backgroundImage = `url(images/${arr[val.target.id].story})`;
             full.style.display = "block";
             // document.querySelector('.footer').style.display = 'none';
         }
@@ -98,7 +98,7 @@ arr2 = [
      description:"I am 5yrs old child 😜"},
     {dp:"google_logo_2015_810-1900x700_c.webp",
      username:"google.com",
-     post:"pexels-cottonbro-7350953.mp4",
+     post:"meta.jpeg",
      description:"Enhancing users experience😊"},
     {dp:"spiderman-4k-newartwork-ko-3840x2160.jpg",
      username:"peter_parker",
@@ -109,7 +109,9 @@ arr2 = [
      post:"tony-stark-iron-man-4k-7q-1125x2436.jpg",
      description:"The Truth is, I Am Iron Man 😎"}
 ];
-// localStorage.setItem('arr2', JSON.stringify(arr2));
+
+    localStorage.setItem('arr2', JSON.stringify(arr2));
+    
 
 //Create Post Div
 
@@ -189,9 +191,10 @@ function next(){
         });
     }
 }
+
 arr2 = JSON.parse(localStorage.getItem('arr2')) || [];
 arr2 = shuffleArray(arr2);
-
+console.log(arr2);
 // arr2.pop();
 // localStorage.setItem('arr2', JSON.stringify(arr2));
 
@@ -201,7 +204,7 @@ arr2.forEach(function(ele,idx){
     <div class="c-header">
         <div class="h-left">
                 <div class="image story">
-                    <img src="${ele.dp}" id = "${idx}" alt="">
+                    <img src="images/${ele.dp}" id = "${idx}" alt="">
                 </div>
                 <span>${ele.username}</span>
         </div>
@@ -242,9 +245,14 @@ for (let i = 0; i < main.children.length; i++) {
     let postContent = '';
 
     if (currentData.post.includes(".mp4")) {
-        postContent = `<video src="${currentData.post}" class = "vdo" controls loop ></video>`;
+        postContent = `<video src="videos/${currentData.post}" class = "vdo" controls loop ></video>`;
     } else {
-        postContent = `<img src="${currentData.post}" alt="">`;
+        if((currentData.post.includes("https://"))){
+            postContent = `<img src="${currentData.post}" alt="">`;
+        }
+        else{
+            postContent = `<img src="images/${currentData.post}" alt="">`;
+        }
     }
 
     currentCard.querySelector('.c-post').innerHTML = postContent + '\n<i class="fa-solid fa-heart"></i>';
@@ -342,7 +350,7 @@ arr3.forEach(function(ele){
     clutter3 += `<div class="c-header">
     <div class="h-left">
             <div class="image story">
-                <img src="${ele.dp}" alt="">
+                <img src="images/${ele.dp}" alt="">
             </div>
             <span>${ele.username}</span>
     </div>
